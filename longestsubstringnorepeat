@@ -1,0 +1,15 @@
+memo = {}
+        def temp(s):
+            if len(s) == len(set(list(s))):
+                return len(s)
+            else:
+                if s not in memo:
+                    if s[1:] not in memo:
+                        memo[s[1:]] = temp(s[1:])
+                    if s[:-1] not in memo:
+                        memo[s[:-1]] = temp(s[:-1])
+                    memo[s] =  max(memo[s[1:]],
+                           memo[s[:-1]])
+                return memo[s]
+       
+        return temp(s)
